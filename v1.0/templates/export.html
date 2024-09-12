@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Esporta Lista Giocatori</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Esportazione della Lista dei Giocatori</h1>
+
+    <p>La lista dei giocatori è stata esportata correttamente.</p>
+
+    <a href="{{ url_for('export') }}"><button>Scarica il file Excel</button></a>
+    <a href="/"><button>Torna alla Home</button></a>
+
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>

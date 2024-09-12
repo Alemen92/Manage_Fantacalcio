@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestione {{ role }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Gestione {{ role.capitalize() }}</h1>
+
+    <p>Giocatori rimanenti da prendere: {{ players_left }}</p>
+    <p>Crediti medi disponibili per giocatore: {{ avg_credit }}</p>
+
+    <form action="" method="POST">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="surname">Cognome:</label>
+        <input type="text" id="surname" name="surname" required><br>
+
+        <label for="team">Squadra:</label>
+        <input type="text" id="team" name="team" required><br>
+
+        <label for="cost">Crediti spesi:</label>
+        <input type="number" id="cost" name="cost" required><br>
+
+        <button type="submit">Aggiungi Giocatore</button>
+    </form>
+
+    <h2>Giocatori già selezionati</h2>
+    <ul>
+        {% for player in players %}
+            <li>{{ player.name }} {{ player.surname }} - {{ player.team }} (Crediti: {{ player.cost }})</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Pulsante per tornare alla home solo qui -->
+    <a href="/" class="home-button">Torna alla Home</a>
+    
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>

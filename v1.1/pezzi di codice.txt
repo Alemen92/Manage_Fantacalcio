@@ -1,0 +1,8 @@
+def role_page(role):
+    players = Player.query.filter_by(role=role).all()
+    budget = Budget.query.filter_by(role=role).first()
+    players_left = 3 if role == 'portieri' else 8 if role in ['difensori', 'centrocampisti'] else 6
+    players_left -= len(players)
+    avg_credit = budget.remaining_budget / players_left if players_left > 0 else 0
+
+    return render_template('role_page.html', players=players, role=role, avg_credit=avg_credit, players_left=players_left)

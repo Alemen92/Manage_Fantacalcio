@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestione {{ role }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Gestione {{ role.capitalize() }}</h1>
+
+        <p>Giocatori rimanenti da prendere: {{ players_left }}</p>
+        <p>Crediti medi disponibili per giocatore: {{ avg_credit }}</p>
+
+        <form action="" method="POST">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" required><br>
+
+            <label for="surname">Cognome:</label>
+            <input type="text" id="surname" name="surname" required><br>
+
+            <label for="team">Squadra:</label>
+            <select id="team" name="team" required>
+                <option value="">Seleziona una squadra</option>
+                <option value="Atalanta">Atalanta</option>
+                <option value="Bologna">Bologna</option>
+                <option value="Cagliari">Cagliari</option>
+                <option value="Como">Como</option>
+                <option value="Empoli">Empoli</option>
+                <option value="Fiorentina">Fiorentina</option>
+                <option value="Genoa">Genoa</option>
+                <option value="Hellas Verona">Hellas Verona</option>
+                <option value="Inter">Inter</option>
+                <option value="Juventus">Juventus</option>
+                <option value="Lazio">Lazio</option>
+                <option value="Lecce">Lecce</option>
+                <option value="Milan">Milan</option>
+                <option value="Monza">Monza</option>
+                <option value="Napoli">Napoli</option>
+                <option value="Parma">Parma</option>
+                <option value="Roma">Roma</option>
+                <option value="Torino">Torino</option>
+                <option value="Udinese">Udinese</option>
+                <option value="Venezia">Venezia</option>
+            </select><br>
+
+            <label for="cost">Crediti spesi:</label>
+            <input type="number" id="cost" name="cost" required><br>
+
+            <button type="submit">Aggiungi Giocatore</button>
+        </form>
+
+        <!-- Lista dei giocatori visibile completamente -->
+        <div class="selected-players">
+            <h2>Giocatori già selezionati</h2>
+            <ul>
+                {% for player in players %}
+                <li>
+                    <span>{{ player.name }} {{ player.surname }} - {{ player.team }}</span>
+                    <span class="player-credits">(Crediti: {{ player.cost }})</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <a href="/" class="home-button">Torna alla Home</a>
+
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>

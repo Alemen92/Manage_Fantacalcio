@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestione Budget Fantacalcio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Gestione Budget Fantacalcio</h1>
+
+    <!-- Riquadro budget in un form -->
+    <form action="/set_budget" method="POST">
+        <div>
+            <label for="portieri_budget">Budget Portieri:</label>
+            <input type="number" id="portieri_budget" name="portieri_budget" value="{{ budgets[0].total_budget if budgets }}">
+        </div>
+        <div>
+            <label for="difensori_budget">Budget Difensori:</label>
+            <input type="number" id="difensori_budget" name="difensori_budget" value="{{ budgets[1].total_budget if budgets }}">
+        </div>
+        <div>
+            <label for="centrocampisti_budget">Budget Centrocampisti:</label>
+            <input type="number" id="centrocampisti_budget" name="centrocampisti_budget" value="{{ budgets[2].total_budget if budgets }}">
+        </div>
+        <div>
+            <label for="attaccanti_budget">Budget Attaccanti:</label>
+            <input type="number" id="attaccanti_budget" name="attaccanti_budget" value="{{ budgets[3].total_budget if budgets }}">
+        </div>
+        <button type="submit">Conferma Budget</button>
+    </form>
+
+    <!-- Container per i pulsanti dei ruoli e l'esportazione -->
+    <div class="buttons-container">
+        <a href="/role/portieri"><button>Gestione Portieri</button></a>
+        <a href="/role/difensori"><button>Gestione Difensori</button></a>
+        <a href="/role/centrocampisti"><button>Gestione Centrocampisti</button></a>
+        <a href="/role/attaccanti"><button>Gestione Attaccanti</button></a>
+        <a href="/export"><button>Esporta in Excel</button></a>
+    </div>
+
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
